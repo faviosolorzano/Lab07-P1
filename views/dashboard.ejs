@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Dashboard
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/styles.css"
+    >
+
+</head>
+
+<body
+    class="app-body"
+    style="--server-color: <%= color %>;"
+>
+
+    <header class="navbar">
+
+        <div>
+
+            <strong>
+                LAB 07
+            </strong>
+
+            <span>
+                Sistema de Gestión
+            </span>
+
+        </div>
+
+        <div class="navbar-user">
+
+            <span>
+                <%= usuario.nombre %>
+            </span>
+
+            <a href="/logout">
+                Cerrar sesión
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="dashboard-container">
+
+        <div class="welcome-panel">
+
+            <div>
+
+                <p class="eyebrow">
+                    PANEL PRINCIPAL
+                </p>
+
+                <h1>
+                    Bienvenido,
+                    <%= usuario.nombre %>
+                </h1>
+
+                <p>
+                    Has iniciado sesión correctamente.
+                </p>
+
+            </div>
+
+            <div class="backend-badge">
+
+                <span></span>
+
+                <div>
+
+                    <small>
+                        SERVIDOR ACTUAL
+                    </small>
+
+                    <strong>
+                        <%= servidor %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <section class="stats-grid">
+
+            <article class="stat-card">
+
+                <span>
+                    Usuarios registrados
+                </span>
+
+                <strong>
+                    <%= totalUsuarios %>
+                </strong>
+
+                <p>
+                    Usuarios almacenados en SQLite
+                </p>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <span>
+                    Tu rol
+                </span>
+
+                <strong class="small-value">
+                    <%= usuario.rol %>
+                </strong>
+
+                <p>
+                    Nivel de acceso actual
+                </p>
+
+            </article>
+
+
+            <article class="stat-card server-stat">
+
+                <span>
+                    Backend
+                </span>
+
+                <strong class="small-value">
+                    <%= servidor %>
+                </strong>
+
+                <p>
+                    Puerto <%= puerto %>
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <section class="action-panel">
+
+            <div>
+
+                <h2>
+                    Gestión de usuarios
+                </h2>
+
+                <p>
+                    Registra, consulta, modifica o elimina usuarios.
+                </p>
+
+            </div>
+
+            <a
+                href="/usuarios"
+                class="primary-link"
+            >
+                Administrar usuarios
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

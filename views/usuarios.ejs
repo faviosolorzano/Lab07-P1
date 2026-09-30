@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Usuarios
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/styles.css"
+    >
+
+</head>
+
+<body
+    class="app-body"
+    style="--server-color: <%= color %>;"
+>
+
+    <header class="navbar">
+
+        <div>
+
+            <strong>
+                LAB 07
+            </strong>
+
+            <span>
+                Gestión de usuarios
+            </span>
+
+        </div>
+
+        <div class="navbar-user">
+
+            <span>
+                <%= servidor %>
+            </span>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="dashboard-container">
+
+        <section class="table-panel">
+
+            <div class="table-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        CRUD
+                    </p>
+
+                    <h1>
+                        Usuarios
+                    </h1>
+
+                    <p>
+                        Administra los usuarios registrados en el sistema.
+                    </p>
+
+                </div>
+
+                <a
+                    href="/usuarios/nuevo"
+                    class="primary-link"
+                >
+                    + Nuevo usuario
+                </a>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Nombre</th>
+
+                            <th>Correo</th>
+
+                            <th>Rol</th>
+
+                            <th>Acciones</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <% usuarios.forEach(u => { %>
+
+                            <tr>
+
+                                <td>
+                                    <%= u.id %>
+                                </td>
+
+                                <td>
+                                    <strong>
+                                        <%= u.nombre %>
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    <%= u.email %>
+                                </td>
+
+                                <td>
+
+                                    <span class="role-badge">
+
+                                        <%= u.rol %>
+
+                                    </span>
+
+                                </td>
+
+                                <td>
+
+                                    <div class="actions">
+
+                                        <a
+                                            class="edit-btn"
+                                            href="/usuarios/editar/<%= u.id %>"
+                                        >
+                                            Editar
+                                        </a>
+
+                                        <% if (u.id !== usuario.id) { %>
+
+                                            <form
+                                                action="/usuarios/eliminar/<%= u.id %>"
+                                                method="POST"
+                                                onsubmit="return confirm('¿Deseas eliminar este usuario?')"
+                                            >
+
+                                                <button
+                                                    class="delete-btn"
+                                                    type="submit"
+                                                >
+                                                    Eliminar
+                                                </button>
+
+                                            </form>
+
+                                        <% } else { %>
+
+                                            <span class="current-user">
+                                                Sesión actual
+                                            </span>
+
+                                        <% } %>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        <% }) %>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

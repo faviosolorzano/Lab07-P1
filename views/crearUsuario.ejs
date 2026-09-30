@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Nuevo usuario
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/styles.css"
+    >
+
+</head>
+
+<body
+    class="app-body"
+    style="--server-color: <%= color %>;"
+>
+
+    <header class="navbar">
+
+        <div>
+
+            <strong>
+                LAB 07
+            </strong>
+
+            <span>
+                Nuevo usuario
+            </span>
+
+        </div>
+
+        <div class="navbar-user">
+
+            <span>
+                <%= servidor %>
+            </span>
+
+            <a href="/usuarios">
+                Volver
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="form-page">
+
+        <section class="form-card">
+
+            <p class="eyebrow">
+                CREAR
+            </p>
+
+            <h1>
+                Registrar usuario
+            </h1>
+
+            <p class="form-description">
+                Completa los datos del nuevo usuario.
+            </p>
+
+
+            <% if (error) { %>
+
+                <div class="error-message">
+
+                    <span>!</span>
+
+                    <%= error %>
+
+                </div>
+
+            <% } %>
+
+
+            <form
+                action="/usuarios/nuevo"
+                method="POST"
+            >
+
+                <div class="form-group">
+
+                    <label>
+                        Nombre completo
+                    </label>
+
+                    <input
+                        type="text"
+                        name="nombre"
+                        placeholder="Ej. Favio Solorzano"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="usuario@correo.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        minlength="6"
+                        placeholder="Mínimo 6 caracteres"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Rol
+                    </label>
+
+                    <select
+                        name="rol"
+                        required
+                    >
+
+                        <option value="Usuario">
+                            Usuario
+                        </option>
+
+                        <option value="Administrador">
+                            Administrador
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-buttons">
+
+                    <a
+                        href="/usuarios"
+                        class="secondary-link"
+                    >
+                        Cancelar
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Registrar usuario
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

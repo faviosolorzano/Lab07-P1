@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Login - Lab 07
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/styles.css"
+    >
+
+</head>
+
+<body style="--server-color: <%= color %>;">
+
+    <main class="login-container">
+
+        <section class="login-card">
+
+            <div class="server-line"></div>
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    L7
+                </div>
+
+            </div>
+
+            <h1>
+                Bienvenido
+            </h1>
+
+            <p class="subtitle">
+                Ingresa tus credenciales para acceder al sistema
+            </p>
+
+            <% if (error) { %>
+
+                <div class="error-message">
+
+                    <span>!</span>
+
+                    <%= error %>
+
+                </div>
+
+            <% } %>
+
+            <form
+                action="/login"
+                method="POST"
+            >
+
+                <div class="form-group">
+
+                    <label>
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="admin@tecsup.edu.pe"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Ingrese su contraseña"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+
+                    Iniciar sesión
+
+                </button>
+
+            </form>
+
+            <div class="demo">
+
+                <p>
+                    Usuario de prueba
+                </p>
+
+                <span>
+                    admin@tecsup.edu.pe
+                </span>
+
+                <span>
+                    Contraseña: 123456
+                </span>
+
+            </div>
+
+            <div class="server-info">
+
+                <span class="status"></span>
+
+                Atendido por
+
+                <strong>
+                    <%= servidor %>
+                </strong>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
